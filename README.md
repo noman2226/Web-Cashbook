@@ -21,3 +21,10 @@ The app saves data locally in browser storage and can also connect to a local JS
 ## Supabase sync
 
 Supabase is configured through `.env.local`. Before cloud sync can work, open the Supabase SQL Editor and run the SQL in `supabase-schema.sql`. The app then syncs the current workspace to Supabase while keeping browser and local-file storage available for offline use.
+
+For Vercel, add these variables under **Project Settings > Environment Variables** for the Production environment, then redeploy:
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+
+The Vite config accepts both `NEXT_PUBLIC_*` and `VITE_*` names.
