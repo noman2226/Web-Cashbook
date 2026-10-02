@@ -450,6 +450,20 @@ function App() {
     URL.revokeObjectURL(link.href);
   }
 
+  async function persistImportedWorkspace(nextWorkspace: WorkspaceState) {
+    setWorkspace(nextWorkspace);
+    setFilters(EMPTY_FILTERS);
+    resetForm();
+
+    const [fileConnected, cloudConnected] = await Promise.all([
+      saveWorkspaceState(nextWorkspace),
+      saveCloudWorkspace(nextWorkspace),
+    ]);
+
+    setStorageMode(fileConnected ? 'file' : 'browser');
+    setCloudMode(supabaseEnabled ? (cloudConnected ? 'connected' : 'error') : 'off');
+  }
+
   async function handleImport(file: File) {
     try {
       const isExcel = /\.(xlsx|xls)$/i.test(file.name) || file.type.includes('sheet') || file.type.includes('excel');
@@ -471,13 +485,13 @@ function App() {
           throw new Error('No rows could be read from the spreadsheet');
         }
 
-        setWorkspace((current) => ({
-          books: [nextBook, ...current.books],
-          entries: [...importedEntries, ...current.entries],
+        const nextWorkspace: WorkspaceState = {
+          books: [nextBook, ...workspace.books],
+          entries: [...importedEntries, ...workspace.entries],
           activeBookId: nextBook.id,
-        }));
-        setFilters(EMPTY_FILTERS);
-        resetForm();
+        };
+
+        await persistImportedWorkspace(nextWorkspace);
         return;
       }
 
@@ -488,9 +502,7 @@ function App() {
         throw new Error('Invalid backup file');
       }
 
-      setWorkspace(nextWorkspace);
-      setFilters(EMPTY_FILTERS);
-      resetForm();
+      await persistImportedWorkspace(nextWorkspace);
     } catch {
       alert('This file could not be imported. Please select a valid JSON or Excel file.');
     }
