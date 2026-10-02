@@ -1,0 +1,23 @@
+
+> web-cashbook@0.0.0 dev
+> vite --host 0.0.0.0
+
+
+  [32m[1mVITE[22m v7.3.6[39m  [2mready in [0m[1m382[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.1.4:[1m5173[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[2m12:26:18 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m12:26:29 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m12:26:52 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m12:26:52 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m12:27:09 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m12:27:09 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m12:53:10 am[22m [36m[1m[vite][22m[39m [32m.env.local changed, restarting server...[39m
+[2m12:53:10 am[22m [36m[1m[vite][22m[39m server restarted.
+[2m12:53:10 am[22m [36m[1m[vite][22m[39m [32m.env.local changed, restarting server...[39m
+[2m12:53:10 am[22m [36m[1m[vite][22m[39m server restarted.
+[2m12:57:21 am[22m [36m[1m[vite][22m[39m [32m.env.local changed, restarting server...[39m
+[2m12:57:21 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m Re-optimizing dependencies because lockfile has changed
+[2m12:57:21 am[22m [36m[1m[vite][22m[39m server restarted.
