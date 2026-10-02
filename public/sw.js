@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cashbook-local-cache-v1';
+const CACHE_NAME = 'cashbook-local-cache-v2';
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -18,6 +18,19 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') {
+    return;
+  }
+
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request)
+        .then((networkResponse) => {
+          const responseClone = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put('/index.html', responseClone));
+          return networkResponse;
+        })
+        .catch(() => caches.match('/index.html')),
+    );
     return;
   }
 
